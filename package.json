@@ -1,0 +1,12 @@
+{
+  "name": "playwright-runFor-clearInterval",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test:ui": "yarn playwright install chromium && yarn playwright test --ui"
+  },
+  "dependencies": {
+    "@playwright/test": "1.49.0"
+  }
+}
