@@ -66,8 +66,7 @@ test.describe("Clear intervals", () => {
     // Start a background interval
     await page.getByRole("button", { name: "Start timer" }).click();
 
-    await test.step("Install and tick fake timers", async () => {
-      // Install fake clock to handle timers other than an already started one
+    await test.step("Install fake timer", async () => {
       context.clock.install();
     });
 
@@ -89,8 +88,7 @@ test.describe("Clear intervals", () => {
     // Start a background interval
     await page.getByRole("button", { name: "Start timer" }).click();
 
-    await test.step("Install and tick fake timers", async () => {
-      // Run fake clock assuming that it is already installed
+    await test.step("Tick fake timer assuming it's already installed", async () => {
       context.clock.runFor(2000);
     });
 
