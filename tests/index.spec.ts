@@ -39,7 +39,7 @@ const test = base.extend({
 
     await page.goto("https://test-page.localhost/");
 
-    use(page);
+    await use(page);
   },
 });
 
