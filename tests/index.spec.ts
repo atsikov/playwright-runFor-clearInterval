@@ -59,7 +59,7 @@ test.describe("Clear intervals", () => {
     await expect(page.getByText("Ticks: 3")).toBeHidden();
   });
 
-  test("should clear intervals when Clock API is used", async ({
+  test("should clear intervals when Clock API is installed after interval is started", async ({
     page,
     context,
   }) => {
@@ -69,6 +69,28 @@ test.describe("Clear intervals", () => {
     await test.step("Install and tick fake timers", async () => {
       // Install fake clock to handle timers other than an already started one
       context.clock.install();
+    });
+
+    await expect(page.getByText("Ticks: 2")).toBeVisible();
+
+    // Clear a background interval
+    await page.getByRole("button", { name: "Stop timer" }).click();
+
+    await page.waitForTimeout(2000);
+
+    await expect(page.getByText("Ticks: 2")).toBeVisible();
+    await expect(page.getByText("Ticks: 3")).toBeHidden();
+  });
+
+  test("should clear intervals when Clock API method is used without clock installed", async ({
+    page,
+    context,
+  }) => {
+    // Start a background interval
+    await page.getByRole("button", { name: "Start timer" }).click();
+
+    await test.step("Install and tick fake timers", async () => {
+      // Run fake clock assuming that it is already installed
       context.clock.runFor(2000);
     });
 
