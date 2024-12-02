@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "test": "yarn playwright install chromium && yarn playwright test",
     "test:ui": "yarn playwright install chromium && yarn playwright test --ui"
   },
   "dependencies": {
